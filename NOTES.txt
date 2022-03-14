@@ -1,0 +1,5 @@
+ ##   middlewares : 
+       like jab tak user login nahi hua ,tab tak koi dusra page open nahi hoga type 
+       interface banana hai toh middleware use karte hai
+        
+ ##   

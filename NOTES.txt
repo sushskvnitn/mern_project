@@ -1,5 +1,7 @@
- ##   middlewares : 
-       like jab tak user login nahi hua ,tab tak koi dusra page open nahi hoga type 
-       interface banana hai toh middleware use karte hai
-        
- ##   
+
+ ##   Middleware functions: 
+      functions that have access to the request object (req),
+      the response object (res), and the next function in the application's
+      request-response cycle.
+      The next function is a function in the Express router which, when invoked,
+      executes the middleware succeeding the current middleware.

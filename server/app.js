@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const dotenv =require("dotenv");//type null > config.env to create dotenv file in terminal 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -7,28 +8,25 @@ const PORT = process.env.PORT || 5000;
 // like jab tak user login nahi hua ,tab tak koi dusra page open nahi hoga type ka
 // interface banana hai toh middleware use karte hai,we have to mention middleware before the (req,res) method
 
+//linking router to make our route easy 
+app.use(require('./router/auth'));
+
 const middleware = (req, res, next) => {
   console.log("hello from middleware ");
   //after the work is complete like authentication ,call next function
   next();
 };
+// CONFIGURING DONENV for better security protection of passwords
+dotenv.config({path: './config.env'})
 
-const DB =
-  "mongodb+srv://sushsk:Sushant%40123@cluster0.neapw.mongodb.net/mernstack?retryWrites=true&w=majority";
-mongoose
-  .connect(DB, {
-    useNewURLParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("connection established to mongo");
-  })
-  .catch((err) => {
-    console.log("no connection established to mongo");
-  });
-app.get("/", (req, res) => {
-  res.send("hello world from server");
-});
+//connecting to database server
+require('./db/connection');
+
+//creating a new user 
+const User  = require("./model/userSchema");
+
+
+
 app.get("/about", middleware, (req, res) => {
   res.send("hello world from about");
 });

@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/',(req, res)=>{
-      res.send("hello from auth.js");
-})
-router.post('/',(req, res)=>{
-      console.log(req.body);
-})
+router.get('/', (req, res) => {
+    res.send(`Hello world from the server router js`);
+});
+
+router.post('/register', (req, res) => {
+    console.log(req.body);
+    res.json({ message: req.body });
+    // res.send("mera register page");
+});
 
 module.exports = router;

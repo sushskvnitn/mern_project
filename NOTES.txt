@@ -29,4 +29,4 @@
            type null > config.env to create dotenv file in terminal and add this file in .gitignore
 
 
-## 
+##  app.use(express.json()); => if we get any json data give it t0 us as a json object 

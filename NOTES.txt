@@ -30,3 +30,9 @@
 
 
 ##  app.use(express.json()); => if we get any json data give it t0 us as a json object 
+
+
+## password secure :
+        password securing will be done using bcrypt js by hashing the password insted of plain password.
+        here we are doing it in userschema.js ,
+

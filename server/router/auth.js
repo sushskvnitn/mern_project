@@ -43,12 +43,17 @@ router.post("/register", async (req, res) => {
     const userExist = await User.findOne({ email: email });
     if (userExist) {
       return res.status(422).json({ error: "Email already exists" });
-    }
+    }else if(password !=cpassword){
+        return res.status(422).json({ error: "password not matching " });
+    }else{
     const user = new User({ name, email, phone, work, password, cpassword });
+    //here we got the data but we are yet to save it ,before saving we can hash the data (hashing is done in userschema )
     await user.save();
     res.status(201).json({ success: "user successfully registered" });
+    }
+
   } catch (error) {
-    console.log(err);
+    console.log(error);
   }
 });
 

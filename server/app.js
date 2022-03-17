@@ -9,8 +9,7 @@ const PORT = process.env.PORT || 3000;
 dotenv.config({path: './config.env'})
 
 app.use(express.json());
-//connecting to database server
-require('./db/connection');
+
 
 //linking router to make our route easy 
 app.use(require('./router/auth'));

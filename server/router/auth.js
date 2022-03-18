@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
 //connecting to database server
 require("../db/connection");
 const User = require("../model/userSchema");
@@ -43,15 +44,13 @@ router.post("/register", async (req, res) => {
     const userExist = await User.findOne({ email: email });
     if (userExist) {
       return res.status(422).json({ error: "Email already exists" });
-    }else if(password !=cpassword){
-        return res.status(422).json({ error: "password not matching " });
-    }else{
+    }
     const user = new User({ name, email, phone, work, password, cpassword });
-    //here we got the data but we are yet to save it ,before saving we can hash the data (hashing is done in userschema )
+
+    //here we got the data but we are yet to save it ,before saving we can hash the data (hashing is done in user)
+
     await user.save();
     res.status(201).json({ success: "user successfully registered" });
-    }
-
   } catch (error) {
     console.log(error);
   }
@@ -59,24 +58,33 @@ router.post("/register", async (req, res) => {
 
 //LOGIN ROUTE 
 router.post('/signin',async (req, res) => {
+
+      try {
     const{email,password}= req.body;
     if ( !email  || !password) {
         return res
           .status(422)
           .json({ error: "make sure all fields are filled up " });
       }
-      try {
           //here User is from user schema 
         const userlogin= await User.findOne({ email: email });
-        console.log(req.body);
-        if(!userlogin) {
-            res.status(404).json({ error: "user with email doesnt exist" });
+        // console.log(req.body);
+            //password is from the user and userlogin.password() is from database
+        
+        if(userlogin){
+            const isMatch = await bcrypt.compare(password, userlogin.password)
+            if(!isMatch) {
+            res.status(400).json({ error: "invalid credentials" });
         }else{
              res.status(201).json({ success: "user signin  successfully " });
         }
+        }else{
+            res.status(400).json({ error: "invalid credentials" });
+        }
+        
        
       } catch (error) {
-        console.log(err);
+        console.log(error);
       }
 
 })

@@ -76,7 +76,17 @@ router.post('/signin',async (req, res) => {
             const isMatch = await bcrypt.compare(password, userlogin.password)
             //generate auth token in userSchema 
             const token =await userlogin.generateAuthToken();
-            console.log(token);
+            // console.log(token);
+
+            //TO STORE JWT TOKEN IN SITE COOKIES ,WE SHOULD GIVE NAME FIRST 
+            //           name  ,   token , options    
+            res.cookie("jwtoken", token  , { 
+              //expire jwt token after 30days from today 
+              expires: new Date( Date.now() + 25892000000),
+              httpOnly: true
+             });
+
+
             if(!isMatch) {
             res.status(400).json({ error: "invalid credentials" });
         }else{

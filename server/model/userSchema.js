@@ -38,6 +38,7 @@ userSchema.methods.generateAuthToken=async function(){
     //this.tokens refers to token in user schema 
       this.tokens = this.tokens.concat({token:tokengenerated});
      await this.save();
+     //return tokengenerated as we are using it in other method for authentication 
      return tokengenerated;
   } catch (error) {
     console.log(error);

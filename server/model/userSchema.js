@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -10,6 +11,11 @@ const userSchema = new mongoose.Schema({
   work: { type: String, required: true },
   password: { type: String, required: true },
   cpassword: { type: String, required: true },
+  //we should store the token in the database and as it generate new token when user
+  // login so we will get many new tokens so to store them we are using array of tokens 
+  tokens:[{
+       token :{ type: String, required: true}
+  }]
 });
 
 
@@ -24,7 +30,19 @@ userSchema.pre('save',async function(next){
   }
   next();//as a midleware function
 });
-
+//as userSchemais instance we can create method and add the function in that method
+userSchema.methods.generateAuthToken=async function(){
+  try {
+    //payload shoud be unique so we are using id from the database for the user
+    let tokengenerated  = jwt.sign({_id:this._id},process.env.SECRET_KEY)
+    //this.tokens refers to token in user schema 
+      this.tokens = this.tokens.concat({token:tokengenerated});
+     await this.save();
+     return tokengenerated;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 const User = mongoose.model("USER",userSchema);
 

@@ -44,3 +44,6 @@
           1: Generate JWT Token and Stored it in Database.
           2: How to Stored the Token in Cookies
           3: Get Token from Cookie and Verify the User
+
+        jwt.sign(payload, secret OrPrivate Key, [options, callback])
+        - is syntax  used to sign a JWT token 

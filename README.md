@@ -12,7 +12,7 @@
            require mongoose in your app and after requiring  mongoose do following ::
            (here DB is the connection link with username and passwords)
 
-         <kbd>  mongoose
+           mongoose
            .connect(DB, {
              useNewURLParser: true,
              useUnifiedTopology: true,
@@ -23,7 +23,6 @@
            .catch((err) => {
              console.log("no connection established to mongo");
            });
-           </kbd>
 
 ## dotenv:this npm package is used to secure your passwords and data , create a dotenv folder by
 
@@ -41,8 +40,6 @@
         JWT, or JSON Web Token, is an open standard used to share security information between two parties — a client and a server.
          Each JWT contains encoded JSON objects, including a set of claims. JWTs are signed using a cryptographic algorithm to ensure
          that the claims cannot be altered after the token is issued.
-         that the claims cannot be altered after the token is issued.
-         that the claims cannot be altered after the token is issued.
          verification through entire application after login is done bye jwt token
          *methods:
           1: Generate JWT Token and Stored it in Database.
@@ -56,9 +53,9 @@
 ## cookie :
 
       TO STORE JWT TOKEN IN SITE COOKIES ,WE SHOULD GIVE  name,token , options in res.cookie
-          <kbd>   res.cookie("jwtoken", token  , {
+           res.cookie("jwtoken", token  , {
               //expire jwt token after 30days from today
               expires: new Date( Date.now() + 25892000000),
               httpOnly: true
              });
-             </kbd>
+             

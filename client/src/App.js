@@ -5,6 +5,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Errorpage from "./components/errorpage";
 import  "./App.css"
 import {
   Routes,
@@ -21,6 +22,7 @@ function App() {
         <Route  path='/contact' element={<Contact/>}  />
         <Route  path='/signup' element={<Signup/>}  />
         <Route  path='/login' element={<Login/>}  />
+        <Route path="*" element={<Errorpage/>}  />
     </Routes>
     
 

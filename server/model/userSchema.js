@@ -18,9 +18,6 @@ const userSchema = new mongoose.Schema({
   }]
 });
 
-
-
-
 //here we are hashing the password 
 //pre method for before saving the data do hash ,we also have post method that can be performed after save
 userSchema.pre('save',async function(next){

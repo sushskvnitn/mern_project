@@ -6,12 +6,12 @@ import { FcWorkflow } from "react-icons/fc";
 import {NavLink} from "react-router-dom" 
 const Signup = () => {
   return (
-    <section className="signup d-flex justify-content-center" >
-      <div className="container mt-5">
+    <section className="signup align-center d-flex justify-content-center" >
+      <div className="container mt-5" style={{ marginLeft:"20rem"}}>
         <div className="row mt-3">
           <form classname="register-form card" id="register-form">
             <div className="form-title " style={{ fontSize: "29px" }}>
-              <b> Sign up</b>
+              <b> Sign in</b>
             </div>
             <div class="row ">
               <div class="col">

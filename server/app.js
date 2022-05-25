@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const cookieParser = require('cookie-parser')
 const dotenv =require("dotenv");//type null > config.env to create dotenv file in terminal 
 const app = express();
+app.use(cookieParser())
 const PORT = process.env.PORT || 5000;
 
 
@@ -21,15 +23,15 @@ const User  = require("./model/userSchema");
 // like jab tak user login nahi hua ,tab tak koi dusra page open nahi hoga type ka
 // interface banana hai toh middleware use karte hai,we have to mention middleware before the (req,res) method
 
-const middleware = (req, res, next) => {
-  console.log("hello from middleware ");
-  //after the work is complete like authentication ,call next function
-  next();
-};
+// const middleware = (req, res, next) => {
+//   console.log("hello from middleware ");
+//   //after the work is complete like authentication ,call next function
+//   next();
+// };
 
-app.get("/about", middleware, (req, res) => {
-  res.send("hello world from about");
-});
+// app.get("/about", (req, res) => {
+//   res.send("hello world from about");
+// });
 app.get("/contact", (req, res) => {
   res.send("hello world from contact");
 });

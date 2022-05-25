@@ -1,10 +1,42 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React from "react";
-
+import React,{useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 const About = () => {
+  const navigate = useNavigate();
+  const callAboutpage = async() => {
+   try {
+     const res = await fetch('/about',{
+       method:"GET",
+        headers:{
+          Accept:"application/json",
+          "Content-Type":"application/json"
+        },
+        credentials:"include"
+     });
+      const data = await res.json();
+      if(!res.status===200){
+        const err = new Error(res.error);
+        throw err;
+      }else{
+        console.log(data.error);
+      }
+   } catch (error) {
+     console.log(error);
+     navigate('/login');
+   } 
+  }
+
+
+  useEffect(() => {
+   callAboutpage();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
   return (
     <>
     <div className="container my-5 py-5" >
+    <form method="GET">
       <div className="card">
         <div className="row g-0">
           <div className="col-5 col-sm-4">
@@ -175,6 +207,7 @@ const About = () => {
 
         </div>
       </div>
+      </form>
     </div>
     </>
   );

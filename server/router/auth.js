@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken")
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
+const authenticate = require("../middleware/authenticate");
 //connecting to database server
 require("../db/connection");
 const User = require("../model/userSchema");
@@ -96,4 +97,8 @@ router.post('/signin',async (req, res) => {
       }
 })
 
+//about us page authentication
+router.get("/about", authenticate,(req, res) => {
+  res.send(req.rootuser);
+});
 module.exports = router;

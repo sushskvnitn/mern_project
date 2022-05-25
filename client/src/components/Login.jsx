@@ -1,7 +1,34 @@
-import React from 'react'
-import {NavLink} from "react-router-dom" 
+import React,{useState} from 'react'
+import {NavLink,useNavigate} from "react-router-dom" 
 import {MdPassword, MdEmail } from "react-icons/md";
 const Login = () => {
+  const navigate = useNavigate();
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const loginuser = async(e) => {
+        e.preventDefault();
+        console.log(email,password);
+        const res= await fetch('/signin',{
+            method:'post',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                email,
+                password
+            })
+
+        });
+        const data = await res.json();
+        if(res.status===400||!data){
+            alert("invalid credentials");
+        }
+        else{
+          alert("successfully logged in");
+            navigate('/');
+        }
+
+    }
   return (
 
     <div>
@@ -16,25 +43,25 @@ const Login = () => {
           </figure>
           <NavLink to="/signup" className=" mx-3 px-3 align-center text-center" >I am already registered</NavLink>
           </div>
-          <form className=" card" id="register-form">
+          <form className=" card" id="register-form" method="POST" >
             <div className="form-title " style={{ fontSize: "29px" }}>
               <b> Sign up</b>
             </div>
           
            <div className="form-outline ">
-              <input placeholder="Email" name="email" type="email" id="email" className="form-control  px-4"  />
+              <input placeholder="Email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}  type="email" id="email" className="form-control  px-4"  />
               <label className="form-label" htmlFor="form6Example5">
               <MdEmail/>  Email
               </label>
             </div>
             <div className="form-outline ">
-              <input placeholder="password" name="password" type="password" id="password" className="form-control m-2 px-4"  />
+              <input placeholder="password" value={password}  onChange={(e)=>setPassword(e.target.value)}  name="password" type="password" id="password" className="form-control m-2 px-4"  />
               <label className="form-label" htmlFor="form6Example4">
               <MdPassword/>  password
               </label>
             </div>
             <div className = " form-group form-button " >
-<input type= "submit" name="signin" id="signin" className = "btn-primary form-submit" value="log in"/>
+<input type= "submit" name="signin" id="signin" onClick={loginuser} className = "btn-primary form-submit" value="log in"/>
 </div>
           </form>
 

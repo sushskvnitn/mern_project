@@ -23,7 +23,7 @@ const Errorpage = () => {
                  
                         <h1  className="text-center" style={{"fontSize":"200px"}} >404</h1>
                         <h2 className="display-5">Page not found</h2>
-                        <NavLink to="/">back to the home page</NavLink>
+                        <NavLink to="/" className="btn btn-primary">back to the home page</NavLink>
                         
                   </div>
             </div>

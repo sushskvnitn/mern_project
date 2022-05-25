@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <div className="container-fluid  ">
     {/* <NavLink className="navbar-brand  text-danger" to="/"> <b>SUSH_SK</b> </NavLink> */}
-    <img src={logo} alt="logo" srcset="" height="70rem" />
+    <img src={logo} alt="logo" srcSet="" height="70rem" />
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>

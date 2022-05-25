@@ -3,22 +3,23 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="container my-5 py-5">
-      <div class="card">
-        <div class="row g-0">
-          <div class="col-5 col-sm-4">
+    <>
+    <div className="container my-5 py-5" >
+      <div className="card">
+        <div className="row g-0">
+          <div className="col-5 col-sm-4">
             <img
               src="https://cdn.shopify.com/s/files/1/0045/5104/9304/files/Styling-American-Crew-Phillipe-RGMN_58cb1549-9653-4a1e-bbdc-4fee6c4bec4c.jpg?v=1648568598"
-              class="img-fluid w-100"
+              className="img-fluid w-100"
               alt="card"
             />
           </div>
-          <div class="col-7 col-sm-7">
-            <div class="card-body">
-              <h5 class="card-title">sushant kogurwar</h5>
-              <p class="card-text text-monospace">web developer</p>
-              <p class="card-text">
-                RATING: <span class="text">1/10</span>
+          <div className="col-7 col-sm-7">
+            <div className="card-body">
+              <h5 className="card-title">sushant kogurwar</h5>
+              <p className="card-text text-monospace">web developer</p>
+              <p className="card-text">
+                RATING: <span className="text">1/10</span>
               </p>
             </div>
             <div>
@@ -131,7 +132,7 @@ const About = () => {
                 </div>
               </div>
               <div
-                className="tab-pane fade show active "
+                className="tab-pane fade show  "
                 id="profile"
                 role="tabpanel"
                 aria-labelledby="profile-tab"
@@ -175,6 +176,7 @@ const About = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

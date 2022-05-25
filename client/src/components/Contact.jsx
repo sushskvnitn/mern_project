@@ -2,7 +2,7 @@ import React from "react";
 const Contact = () => {
   return (
     <>
-    <div className="d-flex text-monospace flex-wrap justify-content-center">
+    <div style={{"backgroundColor":"#d7d7d8"}} className="d-flex text-monospace flex-wrap justify-content-center">
         <div className="p-4 m-2  bg-primary bg-gradient text-white">
         <img src="https://img.icons8.com/ios/50/000000/apple-phone.png" alt=""/>
           <div className="title mb-4 text-bold">

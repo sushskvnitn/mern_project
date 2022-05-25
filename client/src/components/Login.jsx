@@ -10,26 +10,26 @@ const Login = () => {
 
         <div className="row mt-3"> 
              <div className="container mt-5"> 
-          <div class="form-outline d-none d-sm-block ">
+          <div className="form-outline d-none d-sm-block ">
           <figure>
           <iframe src="https://embed.lottiefiles.com/animation/71361"  frameBorder="0" height="200vhvh" width="200vw"style={{pointerEvents: "none",Decoration:"none"}} title="Animation"></iframe>
           </figure>
-          <NavLink to="/signup" class=" mx-3 px-3 align-center text-center" >I am already registered</NavLink>
+          <NavLink to="/signup" className=" mx-3 px-3 align-center text-center" >I am already registered</NavLink>
           </div>
-          <form classname=" card" id="register-form">
+          <form className=" card" id="register-form">
             <div className="form-title " style={{ fontSize: "29px" }}>
               <b> Sign up</b>
             </div>
           
-           <div class="form-outline ">
-              <input placeholder="Email" name="email" type="email" id="email" class="form-control  px-4"  />
-              <label class="form-label" for="form6Example5">
+           <div className="form-outline ">
+              <input placeholder="Email" name="email" type="email" id="email" className="form-control  px-4"  />
+              <label className="form-label" htmlFor="form6Example5">
               <MdEmail/>  Email
               </label>
             </div>
-            <div class="form-outline ">
-              <input placeholder="password" name="password" type="password" id="password" class="form-control m-2 px-4"  />
-              <label class="form-label" for="form6Example4">
+            <div className="form-outline ">
+              <input placeholder="password" name="password" type="password" id="password" className="form-control m-2 px-4"  />
+              <label className="form-label" htmlFor="form6Example4">
               <MdPassword/>  password
               </label>
             </div>

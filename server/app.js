@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const dotenv =require("dotenv");//type null > config.env to create dotenv file in terminal 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 
 // CONFIGURING DONENV for better security protection of passwords

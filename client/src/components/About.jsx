@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React,{useEffect} from "react";
+import React,{useEffect,useState} from "react";
 import {useNavigate} from "react-router-dom";
 const About = () => {
   const navigate = useNavigate();
+  const [UserData, setUserData] = useState({});
   const callAboutpage = async() => {
    try {
      const res = await fetch('/about',{
@@ -14,19 +15,18 @@ const About = () => {
         credentials:"include"
      });
       const data = await res.json();
+      console.log(data);
+      setUserData(data);
+     
       if(!res.status===200){
         const err = new Error(res.error);
         throw err;
-      }else{
-        console.log(data.error);
       }
    } catch (error) {
      console.log(error);
      navigate('/login');
    } 
   }
-
-
   useEffect(() => {
    callAboutpage();
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,21 +35,22 @@ const About = () => {
 
   return (
     <>
+    
     <div className="container my-5 py-5" >
     <form method="GET">
       <div className="card">
         <div className="row g-0">
           <div className="col-5 col-sm-4">
             <img
-              src="https://cdn.shopify.com/s/files/1/0045/5104/9304/files/Styling-American-Crew-Phillipe-RGMN_58cb1549-9653-4a1e-bbdc-4fee6c4bec4c.jpg?v=1648568598"
+            src={UserData.name==="ram"?"https://cdn.shopify.com/s/files/1/0045/5104/9304/files/Styling-American-Crew-Phillipe-RGMN_58cb1549-9653-4a1e-bbdc-4fee6c4bec4c.jpg?v=1648568598":"https://www.w3schools.com/howto/img_avatar.png"}
               className="img-fluid w-100"
               alt="card"
             />
           </div>
           <div className="col-7 col-sm-7">
             <div className="card-body">
-              <h5 className="card-title">sushant kogurwar</h5>
-              <p className="card-text text-monospace">web developer</p>
+              <h5 className="card-title">{UserData.name}</h5>
+              <p className="card-text text-monospace">{UserData.work}</p>
               <p className="card-text">
                 RATING: <span className="text">1/10</span>
               </p>
@@ -87,7 +88,7 @@ const About = () => {
             <input
               type="button"
               className="btn btn-primary btn-sm "
-              name
+              name="true"
               value="Edit"
             />
           </div>
@@ -135,7 +136,7 @@ const About = () => {
                     <label>user id</label>
                   </div>
                   <div className="col-md-6">
-                    <p> 343534534534534</p>
+                    <p>{UserData._id}</p>
                   </div>
                 </div>
                 <div className="row">
@@ -143,7 +144,7 @@ const About = () => {
                     <label>name:</label>
                   </div>
                   <div className="col-md-6">
-                    <p> sushant kogurwar</p>
+                    <p> {UserData.name}</p>
                   </div>
                 </div>   
                  <div className="row">
@@ -159,7 +160,7 @@ const About = () => {
                     <label>phone:</label>
                   </div>
                   <div className="col-md-6">
-                    <p> 234234234</p>
+                    <p>{UserData.phone}</p>
                   </div>
                 </div>
               </div>
@@ -174,7 +175,7 @@ const About = () => {
                     <label>experience</label>
                   </div>
                   <div className="col-md-6">
-                    <p> web developer</p>
+                    <p>{UserData.work}</p>
                   </div>
                 </div>
                 <div className="row">
@@ -198,7 +199,7 @@ const About = () => {
                     <label>phone:</label>
                   </div>
                   <div className="col-md-6">
-                    <p> 234234234</p>
+                    <p>{UserData.phone}</p>
                   </div>
                 </div>
               </div>

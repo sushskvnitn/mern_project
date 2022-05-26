@@ -75,7 +75,7 @@ router.post('/signin',async (req, res) => {
             const isMatch = await bcrypt.compare(password, userlogin.password)
             //generate auth token in userSchema 
             const token =await userlogin.generateAuthToken();
-            console.log(token);
+            // console.log(token);
 
             //TO STORE JWT TOKEN IN SITE COOKIES ,WE SHOULD GIVE NAME FIRST 
             //           name  ,   token , options    
@@ -101,4 +101,27 @@ router.post('/signin',async (req, res) => {
 router.get("/about", authenticate,(req, res) => {
   res.send(req.rootuser);
 });
+//get user data for contact page and home page 
+router.get('/getdata', authenticate,(req, res) => {
+  res.send(req.rootuser);
+})
+//contact us page message send 
+router.post("/contact",authenticate,async(req, res) => {
+  try {
+    const { name, email, phone, message } = req.body;
+    if (!name || !email || !phone || !message) {
+      console.log("error in contact form");
+      return res.json({ error: "make sure all fields are filled up " });
+    }
+    const usercontact =await User.findOne({ _id: req.userID });
+    if (usercontact) {
+      const userMessage=await usercontact.addMessage( name, email, phone, message)
+      await usercontact.save();
+      res.status(201).json({ success: "message sent successfully " });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;

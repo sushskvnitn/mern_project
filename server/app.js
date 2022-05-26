@@ -32,9 +32,9 @@ const User  = require("./model/userSchema");
 // app.get("/about", (req, res) => {
 //   res.send("hello world from about");
 // });
-app.get("/contact", (req, res) => {
-  res.send("hello world from contact");
-});
+// app.get("/contact", (req, res) => {
+//   res.send("hello world from contact");
+// });
 
 app.get("/signin", (req, res) => {
  

@@ -1,6 +1,31 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 
 const Home = () => {
+  const [UserName, setUserName] = useState('');
+  const [show, setshow] = useState(false);
+  const userHome = async() => {
+   try {
+     const res = await fetch('/getdata',{
+       method:"GET",
+        headers:{
+          "Content-Type":"application/json"
+        },
+     });
+      const data = await res.json();
+      console.log(data);
+      setUserName(data.name);
+      setshow(true);
+   } catch (error) {
+     console.log(error);
+   } 
+  }
+  useEffect(() => {
+    userHome();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
+
   return (
         <>
               <img
@@ -18,7 +43,8 @@ const Home = () => {
         }}
       />
     <h3 className="text-center my-5 pt-5" >WELCOME</h3>
-    <h1 className="text-center my-5"> we are Mern developer </h1>
+    <h1 className="text-center   text-monospace text-white">hello_  {UserName+'🙈🙉🙊'} </h1>
+    <h3 className="text-center"> {show?'Glad, to see you back 😁':'we are Mern developer'} </h3>
   </>)
 }
 

@@ -41,9 +41,9 @@ const Login = () => {
           <figure>
           <iframe src="https://embed.lottiefiles.com/animation/71361"  frameBorder="0" height="200vhvh" width="200vw"style={{pointerEvents: "none",Decoration:"none"}} title="Animation"></iframe>
           </figure>
-          <NavLink to="/signup" className=" mx-3 px-3 align-center text-center" >I am already registered</NavLink>
+
           </div>
-          <form className=" card" id="register-form" method="POST" >
+          <form className=" " id="register-form" method="POST" >
             <div className="form-title " style={{ fontSize: "29px" }}>
               <b> Sign up</b>
             </div>
@@ -55,14 +55,15 @@ const Login = () => {
               </label>
             </div>
             <div className="form-outline ">
-              <input placeholder="password" value={password}  onChange={(e)=>setPassword(e.target.value)}  name="password" type="password" id="password" className="form-control m-2 px-4"  />
+              <input placeholder="password" value={password}  onChange={(e)=>setPassword(e.target.value)}  name="password" type="password" id="password" className="form-control  px-4"  />
               <label className="form-label" htmlFor="form6Example4">
               <MdPassword/>  password
               </label>
             </div>
-            <div className = " form-group form-button " >
+          
+            <div className = "btn form-group form-button " >
 <input type= "submit" name="signin" id="signin" onClick={loginuser} className = "btn-primary form-submit" value="log in"/>
-</div>
+</div>  <NavLink to="/signup" className=" mx-3 px-3 align-center text-center" >new user?</NavLink>
           </form>
 
         </div>
